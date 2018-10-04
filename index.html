@@ -1,1 +1,261 @@
-Hello.
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Babylon Template</title>
+
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+            z-index: -10;
+            /* mix-blend-mode: color-dodge; */
+        }
+
+        #container{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+
+
+
+            
+           /* justify-content: space-between; */
+           flex-wrap: wrap;
+           
+
+
+            display: flex;
+            align-items: center;
+
+            mix-blend-mode: color-dodge;
+        }
+
+        #inner-container{
+            position: absolute;
+            /* background-color: red; */
+            width: 100%;
+            /* //height: 100%; */
+            margin-left:150px;
+        }
+
+        #textbg{
+            /* background-color: rgb(90, 90, 90); */
+            /* width: 100%;
+                       flex: 1; */
+            display: flex;
+        }
+
+        #links{
+           width: 100%;
+           display: inline-flex;
+           margin-left: -8px;
+        }
+
+        #text{
+            color:transparent;
+            -webkit-text-stroke: 1px rgb(159, 159, 200);
+
+              /* background: -webkit-linear-gradient(4deg,rgb(130, 130, 180) 0%, #000 25%, rgb(130, 130, 180) 100%); */
+                background: radial-gradient(ellipse 200% 200%,  transparent 30%, rgb(200, 200, 180));
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+                letter-spacing: 0.2em;
+                
+                font-size: 3.5em;
+                line-height: 0.5em;
+            /* mix-blend-mode: color-dodge; */
+            /* margin: auto;
+            display:inline-block; */
+        }
+
+        h1{
+
+            -webkit-margin-before: 0.37em;
+            -webkit-margin-after: 0.37em;
+            /* -webkit-margin-start: 0.2em;
+            -webkit-margin-end: 0.2em; */
+        }
+
+        .main-link{
+            background-color: transparent;
+            font-size: 2em;
+            margin: 10px;
+            color: 1px rgb(159, 159, 233,0.8);
+            padding: 10px;
+            padding-left: 0;
+            padding-top: 0;
+            /* border-radius: 3px;
+            border: 1px solid rgb(130,130,200); */
+            line-height: 0;
+            letter-spacing: 0.2em;
+        }
+
+        a, a:hover{
+            text-decoration: none;
+            -webkit-text-stroke: 1px rgb(159, 159, 200);
+            color:transparent;
+            line-height: 1;
+        }
+
+        button img{
+            width:60px;
+            height: 60px;
+            /* fill:transparent; */
+            /* stroke: #646464;
+            stroke-width:10px;
+            stroke-linejoin: round; */
+        }
+
+        .fa-envelope{
+            display: none;
+        }
+        
+        button svg{
+
+            /* fill:none;
+            stroke: #646464;
+            stroke-width:1px; */
+        }
+
+        #email-icon{
+            display: none;
+        }
+
+
+        /* 
+        ##Device = Tablets, Ipads (landscape)
+        ##Screen = B/w 768px to 1024px
+        */
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+        
+            #text{
+                font-size: 3.2em;
+            }
+
+            .main-link{
+                font-size: 1.7em;
+            }
+        
+            #inner-container{
+                margin-left: 125px;
+            }
+        }
+
+        /* 
+        ##Device = Low Resolution Tablets, Mobiles (Landscape)
+        ##Screen = B/w 481px to 767px
+        */
+
+        @media (min-width: 0px) and (max-width: 767px) {
+        
+            #text{
+                font-size: 1.6em;
+                margin-bottom: 10px;
+            }
+
+            .main-link{
+                font-size: 3em;
+            }
+
+            #inner-container, #links{
+                margin-left: 0;
+                
+            }
+
+            #textbg,#links{
+                    justify-content: center;
+            }
+
+
+            #email-icon{
+                display: initial;
+            }
+
+            #email-text{
+                display: none;
+            }
+
+            h1{
+                line-height: 1em;
+            }
+
+            .main-link{
+                padding: 0px;
+            }
+        
+        }
+
+
+    </style>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Poppins:900" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <canvas id="renderCanvas" touch-action="none"></canvas> //touch-action="none" for best results from PEP
+
+
+    <div id="container">
+        <div id="inner-container">
+            <div id="textbg">
+                <div id="text">
+                    <h1>YOU'RE HERE!</h1>
+                </div>
+            </div>
+            <div id="links">
+                <div class="main-link"><a href="http://linkedin.com/in/finbelcher" target="_blank"><i class="fab fa-linkedin"></i></a></div>
+                <div class="main-link"><a href="https://stock.adobe.com/uk/contributor/207897562/fin-belcher" target="_blank"><i class="fas fa-camera"></i></a></div>
+                <div class="main-link"><!--<a id="email-icon" href="mailto:hello@hello.com"><i class="fas fa-envelope"></i></a><a id="email-text" href="mailto:hello@hello.com">FIN@FINLAYBELCHER.UK</a>--></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    var _0x1892 = ["\x6D\x6F\x75\x73\x65\x6D\x6F\x76\x65", "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", "\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", "\x74\x6F\x75\x63\x68\x6D\x6F\x76\x65", "\x6D\x6F\x75\x73\x65\x64\x6F\x77\x6E", "\x6D\x6F\x75\x73\x65\x75\x70", "\x78", "\x72\x6F\x74\x61\x74\x69\x6F\x6E", "\x6D\x65\x73\x68\x65\x73", "\x7A", "\x6C\x6F\x67", "\x74\x6F\x75\x63\x68\x65\x73", "\x63\x6C\x69\x65\x6E\x74\x58", "\x63\x6C\x69\x65\x6E\x74\x59", "\x69\x6E\x6E\x65\x72\x57\x69\x64\x74\x68", "\x69\x6E\x6E\x65\x72\x48\x65\x69\x67\x68\x74", "\x72\x65\x6E\x64\x65\x72\x43\x61\x6E\x76\x61\x73", "\x76\x61\x72\x79\x69\x6E\x67\x20\x76\x65\x63\x32\x20\x76\x55\x56\x3B\x0D\x0A\x75\x6E\x69\x66\x6F\x72\x6D\x20\x73\x61\x6D\x70\x6C\x65\x72\x32\x44\x20\x74\x65\x78\x74\x75\x72\x65\x53\x61\x6D\x70\x6C\x65\x72\x3B\x0D\x0A\x75\x6E\x69\x66\x6F\x72\x6D\x20\x76\x65\x63\x32\x20\x73\x63\x72\x65\x65\x6E\x53\x69\x7A\x65\x3B\x0D\x0A\x0D\x0A\x75\x6E\x69\x66\x6F\x72\x6D\x20\x73\x61\x6D\x70\x6C\x65\x72\x32\x44\x20\x6E\x6F\x69\x73\x65\x52\x65\x66\x30\x3B\x0D\x0A\x75\x6E\x69\x66\x6F\x72\x6D\x20\x73\x61\x6D\x70\x6C\x65\x72\x32\x44\x20\x6E\x6F\x69\x73\x65\x52\x65\x66\x31\x3B\x0D\x0A\x0D\x0A\x75\x6E\x69\x66\x6F\x72\x6D\x20\x66\x6C\x6F\x61\x74\x20\x74\x69\x6D\x65\x3B\x20\x0D\x0A\x0D\x0A\x23\x64\x65\x66\x69\x6E\x65\x20\x41\x4D\x50\x4C\x49\x54\x55\x44\x45\x20\x30\x2E\x30\x31\x0D\x0A\x23\x64\x65\x66\x69\x6E\x65\x20\x53\x50\x45\x45\x44\x20\x32\x2E\x30\x0D\x0A\x0D\x0A\x76\x65\x63\x34\x20\x72\x67\x62\x53\x68\x69\x66\x74\x28\x20\x69\x6E\x20\x76\x65\x63\x32\x20\x70\x20\x2C\x20\x69\x6E\x20\x76\x65\x63\x34\x20\x73\x68\x69\x66\x74\x29\x20\x7B\x0D\x0A\x20\x20\x20\x20\x73\x68\x69\x66\x74\x20\x2A\x3D\x20\x38\x2E\x30\x2A\x73\x68\x69\x66\x74\x2E\x77\x20\x2D\x20\x31\x2E\x30\x3B\x0D\x0A\x20\x20\x20\x20\x76\x65\x63\x32\x20\x72\x73\x20\x3D\x20\x76\x65\x63\x32\x28\x73\x68\x69\x66\x74\x2E\x78\x2C\x2D\x73\x68\x69\x66\x74\x2E\x79\x29\x3B\x0D\x0A\x20\x20\x20\x20\x76\x65\x63\x32\x20\x67\x73\x20\x3D\x20\x76\x65\x63\x32\x28\x73\x68\x69\x66\x74\x2E\x79\x2C\x2D\x73\x68\x69\x66\x74\x2E\x7A\x29\x3B\x0D\x0A\x20\x20\x20\x20\x76\x65\x63\x32\x20\x62\x73\x20\x3D\x20\x76\x65\x63\x32\x28\x73\x68\x69\x66\x74\x2E\x7A\x2C\x2D\x73\x68\x69\x66\x74\x2E\x78\x29\x3B\x20\x20\x20\x20\x0D\x0A\x20\x20\x20\x20\x66\x6C\x6F\x61\x74\x20\x72\x20\x3D\x20\x74\x65\x78\x74\x75\x72\x65\x32\x44\x28\x74\x65\x78\x74\x75\x72\x65\x53\x61\x6D\x70\x6C\x65\x72\x2C\x20\x70\x2B\x72\x73\x2C\x20\x30\x2E\x30\x29\x2E\x78\x3B\x0D\x0A\x20\x20\x20\x20\x66\x6C\x6F\x61\x74\x20\x67\x20\x3D\x20\x74\x65\x78\x74\x75\x72\x65\x32\x44\x28\x74\x65\x78\x74\x75\x72\x65\x53\x61\x6D\x70\x6C\x65\x72\x2C\x20\x70\x2B\x67\x73\x2C\x20\x30\x2E\x30\x29\x2E\x79\x3B\x0D\x0A\x20\x20\x20\x20\x66\x6C\x6F\x61\x74\x20\x62\x20\x3D\x20\x74\x65\x78\x74\x75\x72\x65\x32\x44\x28\x74\x65\x78\x74\x75\x72\x65\x53\x61\x6D\x70\x6C\x65\x72\x2C\x20\x70\x2B\x62\x73\x2C\x20\x30\x2E\x30\x29\x2E\x7A\x3B\x0D\x0A\x20\x20\x20\x20\x72\x65\x74\x75\x72\x6E\x20\x76\x65\x63\x34\x28\x72\x2C\x67\x2C\x62\x2C\x31\x2E\x30\x29\x3B\x0D\x0A\x7D\x0D\x0A\x76\x65\x63\x34\x20\x6E\x6F\x69\x73\x65\x28\x20\x69\x6E\x20\x76\x65\x63\x32\x20\x70\x20\x29\x20\x7B\x0D\x0A\x20\x20\x20\x20\x72\x65\x74\x75\x72\x6E\x20\x74\x65\x78\x74\x75\x72\x65\x32\x44\x28\x6E\x6F\x69\x73\x65\x52\x65\x66\x30\x2C\x20\x70\x2C\x20\x30\x2E\x30\x29\x3B\x0D\x0A\x7D\x0D\x0A\x0D\x0A\x76\x65\x63\x34\x20\x76\x65\x63\x34\x70\x6F\x77\x28\x20\x69\x6E\x20\x76\x65\x63\x34\x20\x76\x2C\x20\x69\x6E\x20\x66\x6C\x6F\x61\x74\x20\x70\x20\x29\x20\x7B\x0D\x0A\x20\x20\x20\x20\x72\x65\x74\x75\x72\x6E\x20\x76\x65\x63\x34\x28\x70\x6F\x77\x28\x76\x2E\x78\x2C\x70\x29\x2C\x70\x6F\x77\x28\x76\x2E\x79\x2C\x70\x29\x2C\x70\x6F\x77\x28\x76\x2E\x7A\x2C\x70\x29\x2C\x76\x2E\x77\x29\x3B\x20\x0D\x0A\x7D\x0D\x0A\x76\x6F\x69\x64\x20\x6D\x61\x69\x6E\x28\x76\x6F\x69\x64\x29\x7B\x20\x0D\x0A\x20\x20\x20\x20\x76\x65\x63\x32\x20\x70\x20\x3D\x20\x76\x55\x56\x3B\x0D\x0A\x20\x20\x20\x20\x76\x65\x63\x34\x20\x63\x20\x3D\x20\x76\x65\x63\x34\x28\x30\x2E\x30\x2C\x30\x2E\x30\x2C\x30\x2E\x30\x2C\x31\x2E\x30\x29\x3B\x0D\x0A\x20\x20\x20\x20\x76\x65\x63\x34\x20\x73\x68\x69\x66\x74\x20\x3D\x20\x76\x65\x63\x34\x70\x6F\x77\x28\x6E\x6F\x69\x73\x65\x28\x76\x65\x63\x32\x28\x53\x50\x45\x45\x44\x2A\x74\x69\x6D\x65\x2C\x32\x2E\x30\x2A\x53\x50\x45\x45\x44\x2A\x74\x69\x6D\x65\x2F\x32\x35\x2E\x30\x20\x29\x29\x2C\x38\x2E\x30\x29\x0D\x0A\x20\x20\x20\x20\x20\x20\x20\x20\x09\x09\x2A\x76\x65\x63\x34\x28\x41\x4D\x50\x4C\x49\x54\x55\x44\x45\x2C\x41\x4D\x50\x4C\x49\x54\x55\x44\x45\x2C\x41\x4D\x50\x4C\x49\x54\x55\x44\x45\x2C\x31\x2E\x30\x29\x3B\x0D\x0A\x20\x20\x20\x20\x63\x20\x2B\x3D\x20\x72\x67\x62\x53\x68\x69\x66\x74\x28\x70\x2C\x20\x73\x68\x69\x66\x74\x29\x3B\x0D\x0A\x20\x20\x20\x67\x6C\x5F\x46\x72\x61\x67\x43\x6F\x6C\x6F\x72\x20\x3D\x20\x63\x3B\x0D\x0A\x7D\x0D\x0A", "\x72\x67\x62\x47\x6C\x69\x74\x63\x68\x45\x66\x66\x65\x63\x74\x46\x72\x61\x67\x6D\x65\x6E\x74\x53\x68\x61\x64\x65\x72", "\x53\x68\x61\x64\x65\x72\x73\x53\x74\x6F\x72\x65", "\x45\x66\x66\x65\x63\x74", "\x43\x61\x6D\x65\x72\x61", "\x56\x65\x63\x74\x6F\x72\x33", "\x6B\x6F\x73\x68", "\x69\x63\x6F", "\x46\x52\x4F\x4E\x54\x53\x49\x44\x45", "\x4D\x65\x73\x68", "\x4D\x65\x73\x68\x42\x75\x69\x6C\x64\x65\x72", "\x42\x41\x43\x4B\x53\x49\x44\x45", "\x73\x65\x74\x48\x61\x72\x64\x77\x61\x72\x65\x53\x63\x61\x6C\x69\x6E\x67\x4C\x65\x76\x65\x6C", "\x6D\x79\x70\x61\x72\x65\x6E\x74", "\x76\x69\x73\x69\x62\x69\x6C\x69\x74\x79", "\x70\x61\x72\x65\x6E\x74", "\x4F\x6D\x6E\x69\x30", "\x73\x70\x65\x63\x75\x6C\x61\x72", "\x69\x6E\x74\x65\x6E\x73\x69\x74\x79", "\x73\x65\x74\x50\x6F\x73\x69\x74\x69\x6F\x6E", "\x61\x74\x74\x61\x63\x68\x43\x6F\x6E\x74\x72\x6F\x6C", "\x63\x6C\x65\x61\x72\x43\x6F\x6C\x6F\x72", "\x72\x65\x66\x6C\x65\x63\x74\x69\x6F\x6E\x54\x65\x78\x74\x75\x72\x65", "\x72\x61\x69\x6E\x62\x6F\x77\x2F\x72\x61\x69\x6E\x62\x6F\x77", "\x64\x69\x66\x66\x75\x73\x65\x43\x6F\x6C\x6F\x72", "\x69\x6E\x76\x65\x72\x74\x52\x65\x66\x72\x61\x63\x74\x69\x6F\x6E\x59", "\x69\x6E\x64\x65\x78\x4F\x66\x52\x65\x66\x72\x61\x63\x74\x69\x6F\x6E", "\x73\x70\x65\x63\x75\x6C\x61\x72\x54\x65\x78\x74\x75\x72\x65", "\x77\x61\x74\x65\x72\x32\x2E\x6A\x70\x67", "\x76\x53\x63\x61\x6C\x65", "\x75\x53\x63\x61\x6C\x65", "\x75\x73\x65\x47\x6C\x6F\x73\x73\x69\x6E\x65\x73\x73\x46\x72\x6F\x6D\x53\x70\x65\x63\x75\x6C\x61\x72\x4D\x61\x70\x41\x6C\x70\x68\x61", "\x43\x6F\x6C\x6F\x72\x33", "\x6C\x69\x6E\x6B\x52\x65\x66\x72\x61\x63\x74\x69\x6F\x6E\x57\x69\x74\x68\x54\x72\x61\x6E\x73\x70\x61\x72\x65\x6E\x63\x79", "\x61\x6C\x70\x68\x61\x4D\x6F\x64\x65", "\x41\x4C\x50\x48\x41\x5F\x41\x44\x44", "\x45\x6E\x67\x69\x6E\x65", "\x61\x6C\x70\x68\x61", "\x6D\x61\x74\x65\x72\x69\x61\x6C", "\x72\x65\x66\x72\x61\x63\x74\x69\x6F\x6E\x46\x72\x65\x73\x6E\x65\x6C\x50\x61\x72\x61\x6D\x65\x74\x65\x72\x73", "\x70\x6F\x77\x65\x72", "\x72\x65\x66\x6C\x65\x63\x74\x69\x6F\x6E\x46\x72\x65\x73\x6E\x65\x6C\x50\x61\x72\x61\x6D\x65\x74\x65\x72\x73", "\x6C\x65\x66\x74\x43\x6F\x6C\x6F\x72", "\x72\x69\x67\x68\x74\x43\x6F\x6C\x6F\x72", "\x70\x6F\x73\x69\x74\x69\x6F\x6E", "\x63\x6F\x73", "\x73\x69\x6E", "\x73\x65\x74\x44\x69\x72\x65\x63\x74\x69\x6F\x6E\x54\x6F\x54\x61\x72\x67\x65\x74", "\x79", "\x61\x62\x65\x72\x72\x61\x74\x69\x6F\x6E\x41\x6D\x6F\x75\x6E\x74", "\x63\x68\x72\x6F\x6D\x61\x74\x69\x63\x41\x62\x65\x72\x72\x61\x74\x69\x6F\x6E", "\x64\x65\x70\x74\x68", "\x5F\x70\x6F\x73\x74\x50\x72\x6F\x63\x65\x73\x73\x65\x73", "\x63\x61\x6D\x65\x72\x61\x73", "\x63\x6F\x6C\x6F\x72\x4C\x65\x76\x65\x6C", "\x72\x65\x67\x69\x73\x74\x65\x72\x42\x65\x66\x6F\x72\x65\x52\x65\x6E\x64\x65\x72", "\x64\x65\x66\x61\x75\x6C\x74", "\x67\x72\x61\x69\x6E\x45\x6E\x61\x62\x6C\x65\x64", "\x67\x72\x61\x69\x6E", "\x61\x6E\x69\x6D\x61\x74\x65\x64", "\x64\x65\x70\x74\x68\x4F\x66\x46\x69\x65\x6C\x64\x45\x6E\x61\x62\x6C\x65\x64", "\x64\x65\x70\x74\x68\x4F\x66\x46\x69\x65\x6C\x64\x42\x6C\x75\x72\x4C\x65\x76\x65\x6C", "\x4C\x6F\x77", "\x44\x65\x70\x74\x68\x4F\x66\x46\x69\x65\x6C\x64\x45\x66\x66\x65\x63\x74\x42\x6C\x75\x72\x4C\x65\x76\x65\x6C", "\x63\x6F\x6E\x74\x72\x61\x73\x74", "\x69\x6D\x61\x67\x65\x50\x72\x6F\x63\x65\x73\x73\x69\x6E\x67", "\x65\x78\x70\x6F\x73\x75\x72\x65", "\x63\x68\x72\x6F\x6D\x61\x74\x69\x63\x41\x62\x65\x72\x72\x61\x74\x69\x6F\x6E\x45\x6E\x61\x62\x6C\x65\x64", "\x72\x61\x64\x69\x61\x6C\x49\x6E\x74\x65\x6E\x73\x69\x74\x79", "\x64\x69\x72\x65\x63\x74\x69\x6F\x6E", "\x52\x65\x66\x72\x61\x63\x74\x69\x6F\x6E", "\x30\x30\x31\x2E\x6A\x70\x67", "\x67\x65\x74\x41\x6E\x69\x6D\x61\x74\x69\x6F\x6E\x52\x61\x74\x69\x6F", "\x72\x65\x6E\x64\x65\x72", "\x72\x75\x6E\x52\x65\x6E\x64\x65\x72\x4C\x6F\x6F\x70", "\x72\x65\x73\x69\x7A\x65"]; document[_0x1892[3]](_0x1892[2])[_0x1892[1]](_0x1892[0], function (_0xd175x1) { myFunction(_0xd175x1) }); document[_0x1892[3]](_0x1892[2])[_0x1892[1]](_0x1892[4], function (_0xd175x1) { myFunction(_0xd175x1) }); var offset1 = 0; var offset2 = 0; var offset3 = 0; var offsetMax = 2; var tweenCromaticA = 0; var rate = 0.0002; document[_0x1892[3]](_0x1892[2])[_0x1892[1]](_0x1892[5], function (_0xd175x1) { }); document[_0x1892[3]](_0x1892[2])[_0x1892[1]](_0x1892[6], function (_0xd175x1) { mouseDown = false }); var mouseDown = false; var mouseX = 0; var mouseY = 0; var distX = 0; var distY = 0; setInterval(function () { distX = groupPosX - scene[_0x1892[9]][2][_0x1892[8]][_0x1892[7]]; distY = groupPosY - scene[_0x1892[9]][2][_0x1892[8]][_0x1892[10]]; console[_0x1892[11]]() }, 30); var groupPosX = 0; var groupPosY = 0; function myFunction(_0xd175x10) { if (_0xd175x10[_0x1892[12]]) { var mouseX = _0xd175x10[_0x1892[12]][0][_0x1892[13]]; var mouseY = _0xd175x10[_0x1892[12]][0][_0x1892[14]] } else { var mouseX = _0xd175x10[_0x1892[13]]; var mouseY = _0xd175x10[_0x1892[14]] }; groupPosX = map(mouseX, 0, window[_0x1892[15]], -0.3, 0.3); groupPosY = map(mouseY, 0, window[_0x1892[16]], 0.3, -0.3) } function map(_0xd175x12, _0xd175x13, _0xd175x14, _0xd175x15, _0xd175x16) { return (_0xd175x12 - _0xd175x13) * (_0xd175x16 - _0xd175x15) / (_0xd175x14 - _0xd175x13) + _0xd175x15 } var canvas = document[_0x1892[3]](_0x1892[17]); var engine = new BABYLON.Engine(canvas, true); rgbGlitchFX = _0x1892[18]; BABYLON[_0x1892[21]][_0x1892[20]][_0x1892[19]] = rgbGlitchFX; var createScene = function () { var scene = new BABYLON.Scene(engine); var _0xd175x1b = new BABYLON.ArcRotateCamera(_0x1892[22], 0, 0, 10, BABYLON[_0x1892[23]].Zero(), scene); var _0xd175x1c = new BABYLON.StandardMaterial(_0x1892[24], scene); var _0xd175x1d = new BABYLON.StandardMaterial(_0x1892[24], scene); var _0xd175x1e = BABYLON[_0x1892[28]].CreateIcoSphere(_0x1892[25], { radius: 4, radiusY: 4, subdivisions: 2, sideOrientation: BABYLON[_0x1892[27]][_0x1892[26]] }, scene); var _0xd175x1f = BABYLON[_0x1892[28]].CreateIcoSphere(_0x1892[25], { radius: 3.5, radiusY: 3.5, subdivisions: 1, sideOrientation: BABYLON[_0x1892[27]][_0x1892[29]] }, scene); engine[_0x1892[30]](2); var _0xd175x20 = new BABYLON[_0x1892[27]].CreateBox(_0x1892[31], 1, scene); _0xd175x20[_0x1892[32]] = 0; _0xd175x1e[_0x1892[33]] = _0xd175x20; _0xd175x1f[_0x1892[33]] = _0xd175x20; var _0xd175x21 = new BABYLON.PointLight(_0x1892[34], new BABYLON.Vector3(0, -3, 0), scene); _0xd175x21[_0x1892[35]] = new BABYLON.Color3(0.3, 0.3, 1); _0xd175x21[_0x1892[36]] = 0.15; _0xd175x1b[_0x1892[37]](new BABYLON.Vector3(-4, 3, 0)); _0xd175x1b[_0x1892[38]](canvas, true); scene[_0x1892[39]] = new BABYLON.Color3(0, 0, 0); _0xd175x1c[_0x1892[40]] = new BABYLON.CubeTexture(_0x1892[41], scene); _0xd175x1d[_0x1892[40]] = new BABYLON.CubeTexture(_0x1892[41], scene); _0xd175x1c[_0x1892[42]] = _0xd175x1d[_0x1892[42]] = new BABYLON.Color3(0, 0, 0); _0xd175x1c[_0x1892[43]] = _0xd175x1d[_0x1892[43]] = false; _0xd175x1c[_0x1892[44]] = _0xd175x1d[_0x1892[44]] = 0.98; _0xd175x1c[_0x1892[45]] = new BABYLON.Texture(_0x1892[46], scene); _0xd175x1d[_0x1892[45]] = new BABYLON.Texture(_0x1892[46], scene); _0xd175x1c[_0x1892[45]][_0x1892[47]] = _0xd175x1c[_0x1892[45]][_0x1892[48]] = 5; _0xd175x1d[_0x1892[45]][_0x1892[47]] = _0xd175x1d[_0x1892[45]][_0x1892[48]] = 2; _0xd175x1c[_0x1892[49]] = _0xd175x1d[_0x1892[49]] = true; _0xd175x1c[_0x1892[42]] = _0xd175x1d[_0x1892[42]] = BABYLON[_0x1892[50]].Black(); _0xd175x1c[_0x1892[51]] = _0xd175x1d[_0x1892[51]] = true; _0xd175x1d[_0x1892[52]] = BABYLON[_0x1892[54]][_0x1892[53]]; _0xd175x1c[_0x1892[55]] = 0.7; _0xd175x1d[_0x1892[55]] = 0.2; _0xd175x1e[_0x1892[56]] = _0xd175x1c; _0xd175x1f[_0x1892[56]] = _0xd175x1d; _0xd175x1c[_0x1892[57]] = new BABYLON.FresnelParameters(); _0xd175x1c[_0x1892[57]][_0x1892[58]] = 2; _0xd175x1c[_0x1892[59]] = new BABYLON.FresnelParameters(); _0xd175x1c[_0x1892[59]][_0x1892[58]] = 2; _0xd175x1c[_0x1892[59]][_0x1892[60]] = BABYLON[_0x1892[50]].Black(); _0xd175x1c[_0x1892[59]][_0x1892[61]] = BABYLON[_0x1892[50]].White(); var _0xd175x22 = 0; scene[_0x1892[73]](function () { _0xd175x21[_0x1892[62]] = new BABYLON.Vector3(Math[_0x1892[63]](_0xd175x22) * 60, 40, Math[_0x1892[64]](_0xd175x22) * 60); _0xd175x21[_0x1892[65]](BABYLON[_0x1892[23]].Zero()); _0xd175x22 += 0.01; _0xd175x1e[_0x1892[8]][_0x1892[10]] = _0xd175x1f[_0x1892[8]][_0x1892[10]] -= 0.01 / 40; _0xd175x1e[_0x1892[8]][_0x1892[66]] = _0xd175x1f[_0x1892[8]][_0x1892[66]] += 0.01 / 20; _0xd175x1e[_0x1892[8]][_0x1892[7]] += 0.015 / 50; _0xd175x1f[_0x1892[8]][_0x1892[7]] += 0.01 / 60; _0xd175x20[_0x1892[8]][_0x1892[7]] += distX / 6; _0xd175x20[_0x1892[8]][_0x1892[10]] += distY / 6; if (mouseDown == true) { _0xd175x23[_0x1892[68]][_0x1892[67]] = tweenCromaticA; console[_0x1892[11]](rate); _0xd175x20[_0x1892[62]][_0x1892[7]] = offset1; _0xd175x20[_0x1892[62]][_0x1892[10]] = offset2; _0xd175x20[_0x1892[62]][_0x1892[66]] = offset3 } else { _0xd175x20[_0x1892[62]][_0x1892[7]] = 0; _0xd175x20[_0x1892[62]][_0x1892[66]] = 0; _0xd175x20[_0x1892[62]][_0x1892[10]] = 0; scene[_0x1892[71]][0][_0x1892[70]][16][_0x1892[69]] = 0; scene[_0x1892[71]][0][_0x1892[70]][16][_0x1892[72]] = 0; _0xd175x23[_0x1892[68]][_0x1892[67]] = 0; rate = 0.00000002; tweenCromaticA = 2000 } }); var _0xd175x23 = new BABYLON.DefaultRenderingPipeline(_0x1892[74], true, scene, [_0xd175x1b]); _0xd175x23[_0x1892[75]] = true; _0xd175x23[_0x1892[76]][_0x1892[36]] = 10; _0xd175x23[_0x1892[76]][_0x1892[77]] = 20; _0xd175x23[_0x1892[78]] = true; _0xd175x23[_0x1892[79]] = BABYLON[_0x1892[81]][_0x1892[80]]; _0xd175x23[_0x1892[83]][_0x1892[82]] = 1.5; _0xd175x23[_0x1892[83]][_0x1892[84]] = 1; _0xd175x23[_0x1892[85]] = true; _0xd175x23[_0x1892[68]][_0x1892[67]] = 800; _0xd175x23[_0x1892[68]][_0x1892[86]] = 4; _0xd175x23[_0x1892[68]][_0x1892[87]][_0x1892[7]] = Math[_0x1892[64]](100); _0xd175x23[_0x1892[68]][_0x1892[87]][_0x1892[66]] = Math[_0x1892[63]](20); var _0xd175x24 = new BABYLON.RefractionPostProcess(_0x1892[88], _0x1892[89], new BABYLON.Color3(0, 1.0, 1.0), 0, 0, 1, _0xd175x1b); var _0xd175x25 = 0; scene[_0x1892[73]](function () { _0xd175x21[_0x1892[62]] = _0xd175x1b[_0x1892[62]]; _0xd175x25 += scene[_0x1892[90]]() * rate }); return scene }; var scene = createScene(); engine[_0x1892[92]](function () { scene[_0x1892[91]]() }); window[_0x1892[1]](_0x1892[93], function () { engine[_0x1892[93]]() })
+    </script>
+
+</body>
+
+</html>
